@@ -1,37 +1,61 @@
+
 #include "libftprintf.h"
 #include <stdarg.h>
-/*
-static void	ft_putstr(char *str)
-{
-	int	i;
 
-	i = 0;
-	while (str[i])
-		i++;
-	write(1, str, i);
+static int	ft_checkformat(va_list *list, char c)
+{
+	int	len;
+
+	len = 0;
+	if (c == 'c')
+		len += ft_putchar(va_arg(*list, int));
+	else if (c == 's')
+		len += ft_putstr(va_arg(*list, char *));
+//	else if (c == 'p')
+	else if (c == 'd' || c == 'i')
+		len += ft_putnbr(va_arg(*list, int));
+	else if (c == 'u')
+		len += ft_putnbr(va_arg(*list, unsigned int));
+//	else if (c == 'x')
+//	else if (c == 'X')
+	else if (c == '%')
+		len += ft_putchar('%');
+	return (len);
 }
 
-int	ft_printf(const char *str ...)
+int	ft_printf(const char *str, ...)
 {
-	while (str[i])
+	int		i;
+	int		len;
+	va_list	myarg;
+
+	va_start(myarg, str);
+	i = -1;
+	len = 0;
+	while (str[++i])
 	{
-		if (str[i] == '%') 
-		
+		if (str[i] == '%' && str[i + 1])
+			len += ft_checkformat(&myarg, str[++i]);
 		else
-			ft_putstr(str);
-			
+			len += ft_putchar(str[i]);
 	}
+	return (len);
 }
-*/
+/*
 #include <stdio.h>
 int	main()
 {
+	int	y;
+	int	x;
+	y = -1234;
 	char s[] = "Whale";
-	printf("what %s\n", s);
+	x = ft_printf("what %d %s", y, s);
+	ft_printf("%d\n", x);
 }
+*/
 /*
 |notes|
+cspdiuxX%
+printf returns total num of printed characters (\n is also counted a char)
 printf("%s Mytext", myfunction1);
 */
-
-
