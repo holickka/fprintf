@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:33:16 by hsim              #+#    #+#             */
-/*   Updated: 2023/11/13 21:11:17 by hsim             ###   ########.fr       */
+/*   Updated: 2023/11/13 21:09:51 by hsim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_countnum(unsigned int n)
+static int	ft_countnum(int n)
 {
 	int		count;
 	long	nlong;
@@ -24,46 +24,41 @@ static int	ft_countnum(unsigned int n)
 		nlong *= -1;
 		count++;
 	}
-	while (nlong >= 16)
+	while (nlong >= 10)
 	{
-		nlong /= 16;
+		nlong /= 10;
 		count++;
 	}
 	return (count);
 }
 
-int	ft_puthex(unsigned int n, char c)
+int	ft_putnbr(int n)
 {
-	int		len;
+	int		numcount;
+	long	nlong;
 
-	len = ft_countnum(n);
-	if (n >= 16)
+	nlong = (long)n;
+	numcount = ft_countnum(n);
+	if (nlong < 0)
 	{
-		ft_puthex(n / 16, c);
-		ft_puthex(n % 16, c);
+		nlong *= -1;
+		ft_putchar('-');
 	}
-	if (n >= 10 && n <= 15 && c == 'x')
+	if (nlong >= 10)
 	{
-		return (ft_putchar(n - 10 + 'a'));
+		ft_putnbr(nlong / 10);
+		ft_putnbr(nlong % 10);
 	}
-	else if (n >= 10 && n <= 15 && c == 'X')
+	if (nlong >= 0 && nlong <= 9)
 	{
-		ft_putchar(n - 10 + 'A');
+		nlong += '0';
+		ft_putchar(nlong);
 	}
-	if (n >= 0 && n <= 9)
-	{
-		n += '0';
-		ft_putchar(n);
-	}
-	return (len);
+	return (numcount);
 }
-
-#include <stdio.h>
+/*
 int	main()
 {
-	int	y = ft_puthex(1999, 'x');
-//	int	x = 1999;	
-//	int y = printf("%x", x);
-	printf("\n");
-	printf("%d\n", y);
+	ft_putnbr_fd(-2147483648, 1);
 }
+*/
