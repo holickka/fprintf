@@ -6,11 +6,13 @@
 /*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:33:16 by hsim              #+#    #+#             */
-/*   Updated: 2023/11/13 21:27:29 by hsim             ###   ########.fr       */
+/*   Updated: 2023/11/13 21:30:22 by hsim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+/* similar to ft_puthex, with recursive to len */
 
 int	ft_puthex(unsigned int n, char c)
 {
