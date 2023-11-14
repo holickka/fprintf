@@ -11,40 +11,42 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-/*
+
 int	ft_putptr(size_t n)
 {
-	long	nlong;
 	int	len;
 
-	len = 2;
 	ft_putstr("0x");
+	len = 2;
 	if (!n)
 	{
 		write (1, "0", 1);
 		return (len + 1);
 	}
-	nlong = (long)n;
-	if (nlong >= 16)
+	len += ft_puthex(n, 'x');
+/*	if (nlong >= 16)
 	{
-		ft_puthex(nlong / 16);
-		ft_puthex(nlong % 16);
+		len += ft_puthex(nlong / 16, x);
+		len += ft_puthex(nlong % 16, x);
 	}
 	if (nlong >= 10 && nlong <= 15 && x == 1)
-		ft_putchar(nlong - 10 + 'a');
+		len += ft_putchar(nlong - 10 + 'a');
 	else if (nlong >= 10 && nlong <= 15 && x == 2)
-		ft_putchar(nlong - 10 + 'A');
+		len += ft_putchar(nlong - 10 + 'A');
 	if (nlong >= 0 && nlong <= 9)
 	{
 		nlong += '0';
-		ft_putchar(nlong);
+		len += ft_putchar(nlong);
 	}
+*/	return (len);
 }
-*/
+
 #include <stdio.h>
 int	main()
 {
 	char c[] = "Hello";
+	int x = write(1, "2d", 2);
 	printf("%p\n", c);
+	printf("%d\n", x);
 }
 
