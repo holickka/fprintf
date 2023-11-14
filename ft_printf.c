@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 20:58:58 by hsim              #+#    #+#             */
+/*   Updated: 2023/11/14 21:00:20 by hsim             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdarg.h>
@@ -44,7 +55,7 @@ int	ft_printf(const char *str, ...)
 	}
 	return (len);
 }
-
+/*
 #include <stdio.h>
 int	main()
 {
@@ -55,7 +66,7 @@ int	main()
 	x = ft_printf("what %d %s", y, s);
 	ft_printf("%d\n", x);
 }
-
+*/
 /*
 |notes|
 cspdiuxX%
