@@ -11,13 +11,16 @@ static int	ft_checkformat(va_list *list, char c)
 		len += ft_putchar(va_arg(*list, int));
 	else if (c == 's')
 		len += ft_putstr(va_arg(*list, char *));
-//	else if (c == 'p')
+	else if (c == 'p')
+		len += ft_putptr(va_arg(*list, void *));
 	else if (c == 'd' || c == 'i')
 		len += ft_putnbr(va_arg(*list, int));
 	else if (c == 'u')
 		len += ft_putnbr(va_arg(*list, unsigned int));
-//	else if (c == 'x')
-//	else if (c == 'X')
+	else if (c == 'x')
+		len += ft_puthex(va_arg(*list, unsigned int), 'x');
+	else if (c == 'X')
+		len += ft_puthex(va_arg(*list, unsigned int), 'X');
 	else if (c == '%')
 		len += ft_putchar('%');
 	return (len);
@@ -41,7 +44,7 @@ int	ft_printf(const char *str, ...)
 	}
 	return (len);
 }
-/*
+
 #include <stdio.h>
 int	main()
 {
@@ -52,7 +55,7 @@ int	main()
 	x = ft_printf("what %d %s", y, s);
 	ft_printf("%d\n", x);
 }
-*/
+
 /*
 |notes|
 cspdiuxX%

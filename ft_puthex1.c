@@ -1,40 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:33:16 by hsim              #+#    #+#             */
-/*   Updated: 2023/11/14 20:36:37 by hsim             ###   ########.fr       */
+/*   Updated: 2023/11/14 20:28:14 by hsim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putptr(void *n)
+static int	ft_countnum(unsigned long long nlong)
 {
-	int	len;
+	int		count;
 
-	ft_putstr("0x");
-	len = 2;
-	if (!n)
+	count = 1;
+	if (nlong < 0)
 	{
-		len += write (1, "0", 1);
-		return (len);
+		nlong *= -1;
+		count++;
 	}
-	len += ft_puthex_ptr((unsigned long long)n, 'x');
+	while (nlong >= 16)
+	{
+		nlong /= 16;
+		count++;
+	}
+	return (count);
+}
+
+int	ft_puthex(unsigned long long n, char c)
+{
+	int		len;
+
+	len = ft_countnum(n);
+	if (n >= 16)
+	{
+		ft_puthex(n / 16, c);
+		ft_puthex(n % 16, c);
+	}
+	if (n >= 10 && n <= 15 && c == 'x')
+		return (ft_putchar(n - 10 + 'a'));
+	else if (n >= 10 && n <= 15 && c == 'X')
+		ft_putchar(n - 10 + 'A');
+	if (n >= 0 && n <= 9)
+	{
+		n += '0';
+		ft_putchar(n);
+	}
 	return (len);
 }
 /*
 #include <stdio.h>
 int	main()
 {
-	char c[] = "Hello";
-//	int	x = write(1, "2d123", 5);
-	int	x = ft_putptr(c);
-	printf("__");
-	printf("%p", c);
-	printf("%d\n", x);
+	int	y = ft_puthex(0, 'x');
+//	int	x = 1999;	
+//	int y = printf("%x", x);
+	printf("\n");
+	printf("%d\n", y);
 }
 */
