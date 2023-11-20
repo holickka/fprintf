@@ -27,11 +27,11 @@ static int	ft_checkformat(va_list *list, char c)
 	else if (c == 'd' || c == 'i')
 		len += ft_putnbr(va_arg(*list, int));
 	else if (c == 'u')
-		len += ft_putnbr(va_arg(*list, unsigned int));
+		len += ft_putnbr_ux(va_arg(*list, unsigned int), 'u');
 	else if (c == 'x')
-		len += ft_puthex(va_arg(*list, unsigned int), 'x');
+		len += ft_putnbr_ux(va_arg(*list, unsigned int), 'x');
 	else if (c == 'X')
-		len += ft_puthex(va_arg(*list, unsigned int), 'X');
+		len += ft_putnbr_ux(va_arg(*list, unsigned int), 'X');
 	else if (c == '%')
 		len += ft_putchar('%');
 	return (len);
@@ -43,6 +43,8 @@ int	ft_printf(const char *str, ...)
 	int		len;
 	va_list	myarg;
 
+	if (!str)
+		return (0);
 	va_start(myarg, str);
 	i = -1;
 	len = 0;
@@ -61,10 +63,11 @@ int	main()
 {
 	int	y;
 	int	x;
-	y = -1234;
-	char s[] = "Whale";
+	y = 2147483648;
 	x = ft_printf("what %d %s", y, s);
-	ft_printf("%d\n", x);
+	char *s = NULL;
+	int x = ft_printf("%s happy", s);
+	ft_printf("%u", (unsigned int)2147483648);
 }
 */
 /*

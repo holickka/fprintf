@@ -16,7 +16,7 @@
 # include <unistd.h>
 
 int		ft_putchar(char c);
-int		ft_puthex(unsigned int n, char c);
+int		ft_putnbr_ux(unsigned int n, char c);
 int		ft_puthex_ptr(unsigned long long n, char c);
 int		ft_putnbr(int n);
 int		ft_putstr(char *s);
