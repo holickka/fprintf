@@ -6,7 +6,7 @@
 /*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 20:58:58 by hsim              #+#    #+#             */
-/*   Updated: 2023/11/14 21:00:20 by hsim             ###   ########.fr       */
+/*   Updated: 2024/01/22 15:46:12 by hsim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ int	ft_printf(const char *str, ...)
 #include <stdio.h>
 int	main()
 {
-	int	y;
-	int	x;
-	y = 2147483648;
-	x = ft_printf("what %d %s", y, s);
-	char *s = NULL;
-	int x = ft_printf("%s happy", s);
+	int		y;
+	int		x;
+	char	*s;
+	s = NULL;
+	y = -2147483648;
+	x = ft_printf("what %% %d %s", y, s);
 	ft_printf("%u", (unsigned int)2147483648);
+	ft_printf("%%");
 }
 */
 /*
