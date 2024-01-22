@@ -6,7 +6,7 @@
 /*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 20:58:58 by hsim              #+#    #+#             */
-/*   Updated: 2024/01/22 15:46:12 by hsim             ###   ########.fr       */
+/*   Updated: 2024/01/22 19:49:41 by hsim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static int	ft_checkformat(va_list *list, char c)
 	else if (c == 'd' || c == 'i')
 		len += ft_putnbr(va_arg(*list, int));
 	else if (c == 'u')
-		len += ft_putnbr_ux(va_arg(*list, unsigned int), 'u');
+		len += ft_putnbr_ux((unsigned int)va_arg(*list, unsigned int), 'u');
 	else if (c == 'x')
-		len += ft_putnbr_ux(va_arg(*list, unsigned int), 'x');
+		len += ft_putnbr_ux((unsigned int)va_arg(*list, unsigned int), 'x');
 	else if (c == 'X')
-		len += ft_putnbr_ux(va_arg(*list, unsigned int), 'X');
+		len += ft_putnbr_ux((unsigned int)va_arg(*list, unsigned int), 'X');
 	else if (c == '%')
 		len += ft_putchar('%');
 	return (len);
@@ -55,6 +55,7 @@ int	ft_printf(const char *str, ...)
 		else
 			len += ft_putchar(str[i]);
 	}
+	va_end(myarg);
 	return (len);
 }
 /*
