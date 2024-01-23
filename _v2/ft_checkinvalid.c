@@ -6,7 +6,7 @@
 /*   By: hsim <hsim@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:21:47 by hsim              #+#    #+#             */
-/*   Updated: 2024/01/23 16:42:20 by hsim             ###   ########.fr       */
+/*   Updated: 2024/01/23 21:23:08 by hsim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	ft_checkinvalid(char *str)
 	{
 		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[++i]) == NULL)
 		{
-			len += ft_putstr("Invalid identifier detected at ...");
+			len += ft_putstr("Invalid identifier detected at index ");
+			len += ft_putnbr(i);
+			len += ft_putstr(", ->");
 			errorpath = ft_substr(&str[i], 0, 5);
 			len += ft_putstr(errorpath);
 			free(errorpath);
-			len += ft_putstr("... operation aborted!");
+			len += ft_putstr("<- Abort!\n");
 			return (len);
 		}
 	}
