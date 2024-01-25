@@ -15,11 +15,9 @@
 int	ft_checkinvalid(char *str)
 {
 	int		i;
-	int		len;
 	char	*errorpath;
 
 	i = -1;
-	len = 0;
 	while (str[++i])
 	{
 		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[++i]) == NULL)
