@@ -22,7 +22,7 @@ int		ft_putnbr(int n);
 int		ft_putstr(char *s);
 int		ft_putptr(void *n);
 int		ft_putptr_hex(unsigned long long n, char c);
-int		ft_strlen(const char *s);
+size_t		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_checkinvalid(char *str);
