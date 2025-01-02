@@ -4,8 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-SOURCES = ft_printf.c ft_putchar.c ft_putnbr_ux.c\
-		 ft_putnbr.c ft_putptr.c ft_putstr.c ft_strlen.c
+SOURCES = ftpf_printf.c ftpf_putchar.c ftpf_putnbr_ux.c\
+		 ftpf_putnbr.c ftpf_putptr.c ftpf_putstr.c ftpf_strlen.c\
+		 ftpf_strchr.c ftpf_substr.c ftpf_checkinvalid.c ftpf_bzero.c
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
